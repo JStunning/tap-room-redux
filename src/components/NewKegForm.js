@@ -12,12 +12,15 @@ function NewKegForm(props) {
       flavor: event.target.flavor.value,
       price: event.target.price.value,
       alcohol: event.target.alcohol.value,
+      pints: 100,
       id: v4()
     });
   }
 
   return (
     <React.Fragment>
+      <h2>Add a Keg to the List!</h2>
+      <hr />
       <form onSubmit={handleNewKegFormSubmission}>
         <label for="name"><b>Name </b></label>
         <input
