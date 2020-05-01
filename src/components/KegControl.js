@@ -5,42 +5,13 @@ import DailyKeg from './DailyKeg';
 import KegDetail from './KegDetail';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class KegControl extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
-      masterKegList: [
-        {
-          name: "Party Keg",
-          brand: "Brewer Bros",
-          flavor: "Light and easily chuggable",
-          price: "69",
-          alcohol: "2.20",
-          pints: 100,
-          id: "1"
-        },
-        {
-          name: "BBQ Keg",
-          brand: "Johnson",
-          flavor: "Medium dark with lots of hops",
-          price: "59",
-          alcohol: "5.2",
-          pints: 100,
-          id: "2"
-        },
-        {
-          name: "Sorority Keg",
-          brand: "Vivian's",
-          flavor: "Smells and tastes like perfume",
-          price: "64",
-          alcohol: "4",
-          pints: 100,
-          id: "3"
-        }
-      ],
       selectedKeg: null,
       editing:false
     };
@@ -48,33 +19,18 @@ class KegControl extends React.Component {
   }
 
   handleClick = () => {
-    if (this.state.selectedKeg != null) {
-      this.setState({
-        formVisibleOnPage: false,
-        selectedKeg: null
-      });
-    } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
-    }
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
+    this.setState({selectedKeg: null});
   }
 
   handleAddingNewKegToList = (newKeg) => {
     const { dispatch } = this.props;
-    const { id, name, brand, flavor, price, alcohol, pints } = newKeg;
-    const action = {
-      type: 'ADD_TICKET',
-      id: id,
-      name: name,
-      brand: brand,
-      flavor: flavor,
-      price: price,
-      alcohol: alcohol,
-      pints: pints
-    }
+    const action = a.addKeg(newKeg);
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+    const action2 = a.toggleForm();
+    dispatch(action2);
   }
 
   handleChangingSelectedKeg = (id) => {
@@ -89,7 +45,7 @@ class KegControl extends React.Component {
     if (this.state.selectedKeg != null) {
       currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} onPintBuy={this.handleBuyingPint} />
       buttonText = "Return to Keg List";
-    } else if (this.state.formVisibleOnPage) {
+    } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />;
       buttonText = "Return to Keg List";
     } else {
@@ -119,7 +75,8 @@ KegControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterKegList: state
+    masterKegList: state.masterKegList,
+    formVisibleOnPage: state.formVisibleOnPage
   }
 }
 
