@@ -13,7 +13,6 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       selectedKeg: null,
-      editing:false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -38,8 +37,10 @@ class KegControl extends React.Component {
     this.setState({selectedKeg: selectedKeg});
   }
 
-  handleBuyingPint = (id) => {
-    console.log(this.props.masterKegList[id])
+  handleBuyingPint = () => {
+    const { dispatch } = this.props;
+    const action = a.buyPint();
+    dispatch(action);
   }
 
   render(){
@@ -74,7 +75,7 @@ class KegControl extends React.Component {
 }
 
 KegControl.propTypes = {
-  masterKegList: PropTypes.array
+  masterKegList: PropTypes.object
 };
 
 const mapStateToProps = state => {

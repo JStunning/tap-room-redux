@@ -59,10 +59,12 @@ form {
 
 #CurrentState {
   background-color: var(--main-color);
+  padding: 0 10%;
 }
 
 #DailyKeg {
   background-color: var(--main-color);
+  padding: 0 10%;
 }
 
 #kegImage {

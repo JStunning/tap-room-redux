@@ -29,5 +29,6 @@ export default {
       id: 2
     }
   ],
-  selectedKeg: null
+  selectedKeg: null,
+  details: false
 }
