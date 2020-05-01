@@ -22,25 +22,25 @@ function NewKegForm(props) {
       <h2>Add a Keg to the List!</h2>
       <hr />
       <form onSubmit={handleNewKegFormSubmission}>
-        <label for="name"><b>Name </b></label>
+        <label><b>Name </b></label>
         <input
           type='text'
           name='name'
           placeholder='Keg Name' /><br />
-        <label for="brand"><b>Brand </b></label>
+        <label><b>Brand </b></label>
         <input
           type='text'
           name='brand'
           placeholder='Keg Brand' /><br />
-        <label for="flavor"><b>Flavor </b></label>
+        <label><b>Flavor </b></label>
         <input
           name='flavor'
           placeholder='Keg Flavor' /><br />
-        <label for="price"><b>Price </b></label>
+        <label><b>Price </b></label>
         <input
           name='price'
           placeholder='Price' /><br />
-        <label for="alcohol"><b>Alcohol </b></label>
+        <label><b>Alcohol </b></label>
         <input
           name='alcohol'
           placeholder='Alcohol by volume' /><br />
