@@ -1,4 +1,4 @@
-import * as actions from './../../actions';
+import * as actions from '../../actions/toggle-form';
 
 
 describe('help queue actions', () => {
