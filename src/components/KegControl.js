@@ -5,7 +5,7 @@ import DailyKeg from './DailyKeg';
 import KegDetail from './KegDetail';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import * as a from './../actions';
+import * as a from '../actions/index';
 
 class KegControl extends React.Component {
 
@@ -43,7 +43,7 @@ class KegControl extends React.Component {
     let buttonText = null;
 
     if (this.state.selectedKeg != null) {
-      currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} onPintBuy={this.handleBuyingPint} />
+      currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} />
       buttonText = "Return to Keg List";
     } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />;
@@ -60,7 +60,7 @@ class KegControl extends React.Component {
             <button onClick={this.handleClick}>{buttonText}</button>
           </div>
           <div id="DailyKeg">
-            <DailyKeg kegList={this.state.masterKegList} onKegSelection={this.handleChangingSelectedKeg} />
+            <DailyKeg kegList={this.props.masterKegList} onKegSelection={this.handleChangingSelectedKeg} />
           </div>
         </div>
       </React.Fragment>
