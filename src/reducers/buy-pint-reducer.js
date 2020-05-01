@@ -1,19 +1,15 @@
-export default (state = {}, action) => {
+import initialState from "../initialState";
+
+export default (state = initialState, action) => {
   switch (action.type) {
-  case 'BUY_KEG':
-    const { name, brand, flavor, price, alcohol, pints, id } = action;
-    return Object.assign({}, state, {
-      [id]: {
-        name: name,
-        brand: brand,
-        flavor: flavor,
-        price: price,
-        alcohol: alcohol,
-        pints: pints - 1,
-        id: id
+    case 'BUY_KEG':
+      return  {
+        ...state,
+        masterKegList: {
+          pints: pints - 1
+        }
       }
-    });
-  default:
-    return state;
+    default:
+      return state;
   }
 };
