@@ -8,7 +8,7 @@ export default {
       price: "69",
       alcohol: "2.20",
       pints: 100,
-      id: "1"
+      id: 0
     },
     {
       name: "BBQ Keg",
@@ -17,7 +17,7 @@ export default {
       price: "59",
       alcohol: "5.2",
       pints: 100,
-      id: "2"
+      id: 1
     },
     {
       name: "Sorority Keg",
@@ -26,7 +26,7 @@ export default {
       price: "64",
       alcohol: "4",
       pints: 100,
-      id: "3"
+      id: 2
     }
   ],
   selectedKeg: null

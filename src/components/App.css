@@ -1,8 +1,8 @@
 :root {
-  --main-color: #FAF4F4;
-  --secondary-color: #ef962d;
-  --third-color: #9c5518;
-  --fourth-color: #5a3f11;
+  --main-color: #fde6be;
+  --secondary-color: #fda123;
+  --third-color: #a93d03f6;
+  --fourth-color: #39100a;
 }
 
 * {
@@ -50,11 +50,11 @@ form {
 #container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-gap: 3px;
+  grid-gap: 2%;
   text-align: center;
   margin: 0 3%;
   background-color: var(--third-color);
-  padding: 7.5% 5% 4.55% 5%;
+  padding: 7.5% 4% 4.45% 4%;
 }
 
 #CurrentState {
