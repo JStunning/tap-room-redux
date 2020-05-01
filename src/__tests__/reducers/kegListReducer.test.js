@@ -10,7 +10,7 @@ describe('kegListReducer', () => {
     flavor: 'Keg Flavor',
     price: 'Keg Price',
     alcohol: 'Keg Alcohol',
-    pints: 'Keg Pints',
+    pints: 100,
     id: 1
   };
 
