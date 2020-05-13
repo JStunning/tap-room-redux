@@ -38,6 +38,10 @@ form {
   margin: 2%;
 }
 
+hr {
+  border-bottom-color: var(--secondary-color);
+}
+
 #Header {
   background-color: var(--secondary-color);
   margin: 0;

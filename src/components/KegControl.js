@@ -37,9 +37,9 @@ class KegControl extends React.Component {
     this.setState({selectedKeg: selectedKeg});
   }
 
-  handleBuyingPint = () => {
+  handleBuyingPint = (keg) => {
     const { dispatch } = this.props;
-    const action = a.buyPint();
+    const action = a.buyPint(keg);
     dispatch(action);
   }
 
@@ -75,7 +75,7 @@ class KegControl extends React.Component {
 }
 
 KegControl.propTypes = {
-  masterKegList: PropTypes.object
+  masterKegList: PropTypes.array
 };
 
 const mapStateToProps = state => {

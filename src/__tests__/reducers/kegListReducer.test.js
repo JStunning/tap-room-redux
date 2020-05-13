@@ -43,4 +43,30 @@ describe('kegListReducer', () => {
       }
     });
   });
+
+  test('Should successfully remove a pint from a keg', () => {
+    const { name, brand, flavor, price, alcohol, pints, id } = kegData;
+    action = {
+      type: 'BUY_PINT',
+      name: name,
+      brand: brand,
+      flavor: flavor,
+      price: price,
+      alcohol: alcohol,
+      pints: pints,
+      id: id
+    };
+
+    expect(kegListReducer({}, action)).toEqual({
+      [id] : {
+        name: name,
+        brand: brand,
+        flavor: flavor,
+        price: price,
+        alcohol: alcohol,
+        pints: 99,
+        id: id
+      }
+    });
+  });
 });
