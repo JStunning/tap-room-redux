@@ -22,6 +22,7 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const action = a.toggleForm();
     if(this.state.kegDetails === false){
+      this.setState({kegDetails: true})
       dispatch(action);
     } else {
       this.setState({kegDetails: false})
