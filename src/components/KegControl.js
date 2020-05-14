@@ -13,6 +13,7 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       selectedKeg: null,
+      kegDetails: true
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,7 +21,11 @@ class KegControl extends React.Component {
   handleClick = () => {
     const { dispatch } = this.props;
     const action = a.toggleForm();
-    dispatch(action);
+    if(this.state.kegDetails === false){
+      dispatch(action);
+    } else {
+      this.setState({kegDetails: false})
+    }
     this.setState({selectedKeg: null});
   }
 
@@ -43,6 +48,13 @@ class KegControl extends React.Component {
     dispatch(action);
   }
 
+  handleKegDetails = () => {
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
+    this.setState({kegDetails: true});
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -50,12 +62,12 @@ class KegControl extends React.Component {
     if (this.state.selectedKeg != null) {
       currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} onBuyingPint={this.handleBuyingPint}/>
       buttonText = "Return to Keg List";
-    } else if (this.props.formVisibleOnPage) {
+    } else if (this.props.formVisibleOnPage && this.state.selectedKeg == null) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />;
       buttonText = "Return to Keg List";
     } else {
       currentlyVisibleState = <KegList kegList={this.props.masterKegList} onKegSelection={this.handleChangingSelectedKeg} />;
-      buttonText = "Add Keg"; 
+      buttonText = "Add Keg";
     }
     return (
       <React.Fragment>
